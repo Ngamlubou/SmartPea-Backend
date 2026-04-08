@@ -14,7 +14,7 @@ app.use(express.json());
 
 const razorpay = new Razorpay({
   key_id: "rzp_test_SYuOBsX5gApP7v",
-  key_secret: process.env.RAZORPAY_SECRET
+  key_secret: "gRiJfpgLxvJP4oWvrpJDEmrZ"
 });
 
 function generateCode(prefix) {
@@ -54,7 +54,7 @@ app.post("/verify-payment", (req, res) => {
     const body = razorpay_order_id + "|" + razorpay_payment_id;
 
     const expectedSignature = crypto
-      .createHmac("sha256", process.env.RAZORPAY_SECRET)
+      .createHmac("sha256", "gRiJfpgLxvJP4oWvrpJDEmrZ")
       .update(body.toString())
       .digest("hex");
 
